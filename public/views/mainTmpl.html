@@ -1,0 +1,47 @@
+<section class="view-products">
+    <div class="section-header">
+        <h3>Products</h3>
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addModal"><span class="glyphicon glyphicon-plus"></span></button>
+        <div id="addModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Add Product</h4>
+                    </div>
+                    <div class="modal-body flex">
+                        <input type="text" ng-model="name" placeholder="Product Name">
+                        <input type="text" ng-model="price" placeholder="Product Price">
+                        <input type="text" ng-model="description" placeholder="Description">
+                        <input type="text" ng-model="imageUrl" placeholder="Image URL">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="addProduct(name, price, description, imageUrl)">Add</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="product-box">
+        <div class="product-card" ng-repeat="product in products">
+            <a ui-sref="product({product: product.id})"><h4>{{product.name}}</h4></a>
+            <h5>{{product.price}}</h5>
+            <p id="{{product.id}}a">
+                {{product.description}}
+            </p>
+          <form class="hidden" id="{{product.id}}b" ng-submit="updateProduct(product.id, description)">
+            <input type="text" placeholder={{product.description}} ng-model="description">
+          </form>
+            <h6>Product #{{product.id}}</h6>
+            <div class="button-box">
+                <update-button id="product.id" description="product.description"></update-button>
+                <button type="button" ng-click="deleteProduct(product.id)">Delete</button>
+            </div>
+        </div>
+    </div>
+</section>

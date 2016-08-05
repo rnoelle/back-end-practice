@@ -16,6 +16,7 @@ var port = 3000;
 
 
 app.use(bodyParser.json());
+app.use(express.static(__dirname + '/public'));
 
 app.get('/products', productCtrl.getAll);
 app.get('/products/:id', productCtrl.getOne);
