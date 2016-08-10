@@ -3,7 +3,7 @@ var db = app.get('db');
 
 module.exports = {
   create: function (req, res, next) {
-    db.create_product(req.body.name, req.body.price, req.body.description, 'http://thecottagerules.com/wp-content/uploads/2016/03/outhouse-red.jpg',
+    db.create_product(req.body.name, req.body.price, req.body.description, req.body.image_urlnode,
       function (err, resp) {
         console.log(err);
         res.send(resp);
